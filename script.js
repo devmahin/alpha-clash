@@ -17,6 +17,10 @@ function matchingKeyboard(e){
     }else{
         console.log("Not currect")
              // minus plush
+               // update score
+        let updateScore =  scoreUpdate(".life");
+        let currenScore = updateScore - 1;
+        setScoreUpdate(".life", currenScore)
     }
 }
 
