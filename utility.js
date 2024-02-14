@@ -6,6 +6,7 @@ function showSection(className){
     let name = document.querySelector(className);
     name.classList.remove("hidden");
 }
+
 function randomAlphabet(){
     const capitalLettersString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let arrayLetter = capitalLettersString.split("")
@@ -16,6 +17,11 @@ function randomAlphabet(){
 
 function backgroundColorKey (keyboard){
     const randomKeyColor = document.getElementById(keyboard);
-    console.log(randomKeyColor)
+    // console.log(randomKeyColor)
     randomKeyColor.classList.add("bg-amber-700")
+}
+function backgroundColorKeyRemove (keyboard){
+    const randomKeyColor = document.getElementById(keyboard);
+    // console.log(randomKeyColor)
+    randomKeyColor.classList.remove("bg-amber-700")
 }
