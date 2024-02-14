@@ -1,13 +1,3 @@
-// const home = document.querySelector(".home");
-// const playground = document.querySelector(".playground");
-// const score = document.querySelector(".score");
-// function playNow(){
-//     home.classList.add("hidden");
-//     home.style.transtion
-//     playground.classList.remove("hidden");
-// }
-
-
 document.addEventListener("keyup", matchingKeyboard);
 function matchingKeyboard(e){
     let targetKey = e.key;
@@ -20,24 +10,16 @@ function matchingKeyboard(e){
         counterGame();
         // start a new update
         backgroundColorKeyRemove(currentAlphabetLow);
-        // score plush
-        const score = document.querySelector(".score");
-        let scoreKey = score.innerText
-        let newScore = parseInt(scoreKey);
-        let newPlush = newScore + 1;
-        score.innerText = newPlush;
-
+        // update score
+        let updateScore =  scoreUpdate(".score");
+        let currenScore = updateScore + 1;
+        setScoreUpdate(".score", currenScore)
     }else{
         console.log("Not currect")
              // minus plush
-             const score = document.querySelector(".life");
-             let scoreKey = score.innerText
-             let newScore = parseInt(scoreKey);
-             let newMinus = newScore - 1
-             score.innerText = newMinus;
     }
-
 }
+
 
 function counterGame(){
     let storRandom = randomAlphabet()

@@ -25,3 +25,17 @@ function backgroundColorKeyRemove (keyboard){
     // console.log(randomKeyColor)
     randomKeyColor.classList.remove("bg-amber-700")
 }
+
+
+
+// score update
+function scoreUpdate(updateScoreID){
+    const updateScore = document.querySelector(updateScoreID);
+    let updateScoreNum = parseInt(updateScore.innerText);
+    return updateScoreNum 
+}
+
+function setScoreUpdate(updateScoreID, value){
+    const updateScore = document.querySelector(updateScoreID);
+    updateScore.innerText = value;
+}
