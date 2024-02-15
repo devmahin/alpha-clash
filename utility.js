@@ -39,3 +39,11 @@ function setScoreUpdate(updateScoreID, value){
     const updateScore = document.querySelector(updateScoreID);
     updateScore.innerText = value;
 }
+
+
+function getElementTextById (elementID){
+    const element = document.getElementById(elementID)
+    const elem = element.innerText;
+    return elem
+    // console.log(elem)
+}

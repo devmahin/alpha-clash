@@ -39,7 +39,7 @@
             <div class=" flex justify-center">
               <p class="bg-gray-900 text-white p-4 rounded-b-lg text-center">Don't watch keyboard while playing...</p>
             </div>
-            <h1 class="text-9xl text-center mt-10 currentAlphabet text-black  poppins-semibold ">Y</h1>
+            <h1 id="currentAlphabet" class="text-9xl text-center mt-10 currentAlphabet text-black  poppins-semibold ">Y</h1>
           </div>
         </div>
         <div>
@@ -86,10 +86,10 @@
 
     </section>
     <!-- score section -->
-    <section class="score flex items-center justify-center min-h-screen hidden">
+    <section class="scoreFooter flex items-center justify-center min-h-screen hidden">
       <div class="space-y-7 text-center  p-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-lg">
-        <h1 class="text-9xl text-white poppins-extrabold">Score : <span class="poppins-medium">15</span></h1>
-        <button class="btn bg-white text-3xl  uppercase">Play Now</button>
+        <h1 class="text-9xl text-white poppins-extrabold">Score : <span class="poppins-medium game-score">15</span></h1>
+        <button onclick="playAgain()" class="btn bg-white text-3xl playAgain  uppercase">Play again</button>
         <p class="text-3xl text-white">Practice will make you Pro</p>
       </div>
     </section>
