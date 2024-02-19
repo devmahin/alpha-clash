@@ -1,8 +1,13 @@
 document.addEventListener("keyup", matchingKeyboard);
+let btnCheck = false;
 function matchingKeyboard(e){
+    if(btnCheck == false) return;
+
     if(e.key === "Escape"){
         score()
     }
+
+    let audio = new Audio();
     // console.log(e.key)
     let targetKey = e.key;
     let currrentKeyTarget = targetKey.toLowerCase();
@@ -10,6 +15,9 @@ function matchingKeyboard(e){
     const currentAlphabetLow = currentAlphabet.toLowerCase();
     // console.log(currentAlphabetLow, currrentKeyTarget)
     if(currrentKeyTarget === currentAlphabetLow){
+        // Audio addd
+        audio.src = "audio/correctSound.m4a"
+        audio.play()
         console.log("currect")
         counterGame();
         // start a new update
@@ -19,6 +27,9 @@ function matchingKeyboard(e){
         let currenScore = updateScore + 1;
         setScoreUpdate(".score", currenScore)
     }else{
+
+        audio.src = "audio/wrongSound.m4a"
+        audio.play()
         console.log("Not currect")
              // minus plush
                // update score
@@ -40,6 +51,8 @@ function counterGame(){
 }
 
 function playNow(){
+    btnCheck = true;
+
     hideSection(".home");
     showSection(".playground");
     showSection(".scoreFooter");
@@ -49,11 +62,13 @@ function playNow(){
     setScoreUpdate(".score", 0);
 
     counterGame()
+
 }
 
 
 
 function score(){
+    btnCheck = false;
     // let scoreFooter = document.querySelector(".scoreFooter");
     hideSection(".playground");
     showSection(".scoreFooter");
@@ -81,3 +96,7 @@ function playAgain(){
     // result score
 
 }
+
+
+
+
