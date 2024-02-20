@@ -1,9 +1,10 @@
 document.addEventListener("keyup", matchingKeyboard);
+const artboard = document.getElementById("artboard");
 let btnCheck = false;
-function matchingKeyboard(e){
-    if(btnCheck == false) return;
+function matchingKeyboard(e) {
+    if (btnCheck == false) return;
 
-    if(e.key === "Escape"){
+    if (e.key === "Escape") {
         score()
     }
 
@@ -14,7 +15,7 @@ function matchingKeyboard(e){
     const currentAlphabet = document.querySelector(".currentAlphabet").innerText;
     const currentAlphabetLow = currentAlphabet.toLowerCase();
     // console.log(currentAlphabetLow, currrentKeyTarget)
-    if(currrentKeyTarget === currentAlphabetLow){
+    if (currrentKeyTarget === currentAlphabetLow) {
         // Audio addd
         audio.src = "audio/correctSound.m4a"
         audio.play()
@@ -23,34 +24,41 @@ function matchingKeyboard(e){
         // start a new update
         backgroundColorKeyRemove(currentAlphabetLow);
         // update score
-        let updateScore =  scoreUpdate(".score");
+        let updateScore = scoreUpdate(".score");
         let currenScore = updateScore + 1;
         setScoreUpdate(".score", currenScore)
-    }else{
+    } else {
+
 
         audio.src = "audio/wrongSound.m4a"
         audio.play()
         console.log("Not currect")
-             // minus plush
-               // update score
-        let updateScore =  scoreUpdate(".life");
+        // minus plush
+        // update score
+        let updateScore = scoreUpdate(".life");
         let currenScore = updateScore - 1;
-        setScoreUpdate(".life", currenScore)
-        if(updateScore === 0){
+        console.log(currenScore)
+        // updatedLife background
+        let updatedLife = (currenScore / 5) * 100;
+        console.log(updatedLife)
+        artboard.style.background = `linear-gradient(#B7B5B8CC ${updatedLife}%, red)`
+
+        setScoreUpdate(".life", currenScore);
+        if (updateScore === 0) {
             score()
         }
     }
 }
 
 
-function counterGame(){
+function counterGame() {
     let storRandom = randomAlphabet()
     const currentAlphabet = document.querySelector(".currentAlphabet");
     currentAlphabet.innerText = storRandom;
     backgroundColorKey(storRandom.toLowerCase())
 }
 
-function playNow(){
+function playNow() {
     btnCheck = true;
 
     hideSection(".home");
@@ -67,14 +75,14 @@ function playNow(){
 
 
 
-function score(){
+function score() {
     btnCheck = false;
     // let scoreFooter = document.querySelector(".scoreFooter");
     hideSection(".playground");
     showSection(".scoreFooter");
 
     // curren score footer
-    let secUpdate =  scoreUpdate(".score");
+    let secUpdate = scoreUpdate(".score");
     // console.log(secUpdate)
     setScoreUpdate(".game-score", secUpdate)
 
@@ -84,11 +92,15 @@ function score(){
     let getElem = getElement.toLowerCase();
     console.log(getElem)
     backgroundColorKeyRemove(getElem)
-   
+
+
+    artboard.style.background = `linear-gradient(#B7B5B8CC 100%, red)`
+
+
 }
 
 
-function playAgain(){
+function playAgain() {
     playNow();
     showSection(".scoreFooter");
 
@@ -98,5 +110,19 @@ function playAgain(){
 }
 
 
+// modal 
+const modal = document.getElementById("modal");
+const xCros = document.getElementById("xCros");
+xCros.addEventListener("click", function(){
+    modal.classList.add("hidden")
+})
+function modalOpen(event) {
+    console.log(event.clientY)
+    if (event.clientY < 20) {
+        modal.classList.remove("hidden")
+    }
 
+}
+
+document.body.addEventListener("mousemove", modalOpen)
 
